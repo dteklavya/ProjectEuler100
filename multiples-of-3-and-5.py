@@ -17,17 +17,14 @@ Answer:
 """
 
 
+def sum_multiples_of(number, target):
+    last = target // number
+    return number * (last * (last + 1)) // 2
+
+
 def sum_of_multiples_of_three_and_five(number): 
-    answer = 0 
-    three = 3 
-    while three < number:
-        answer += three
-        for i in range(1, 3):
-            if (three - i) % 5 == 0:
-                answer += three - i
-                break
-        three += 3
-    return answer
+    return sum_multiples_of(3, number-1) + sum_multiples_of(5, number-1) \
+            - sum_multiples_of(15, number-1)
 
 
 assert(sum_of_multiples_of_three_and_five(1000) == 233168)
